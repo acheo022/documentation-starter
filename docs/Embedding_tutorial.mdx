@@ -1,0 +1,46 @@
+---
+title: Embed a video within a webpage
+---
+
+If your video is embedded within an iframe, your HTML code would look like this:\<!DOCTYPE html>
+
+```
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Your website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="main.js"></script>
+  </head>
+ 
+  <body>
+    <!-- Embedded video -->
+    <iframe
+      id="player_iframe"
+      width="800"
+      height="450"
+      src="<SOURCE_URL>"
+      allowfullscreen
+      frameborder="0"
+    ></iframe>
+  </body>
+</html>
+```
+
+In turn, the script for an embedded video within an iframe could look like this:
+
+```
+// main.js
+// We wait until the content of the page was loaded
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('accept-button').addEventListener('click', function () {
+        var iframeWindow = document.getElementById("player_iframe").contentWindow;
+        iframeWindow.postMessage('CONSENT_GIVEN', '*');
+    });
+    document.getElementById('reject-button').addEventListener('click', function () {
+        var iframeWindow = document.getElementById("player_iframe").contentWindow;
+        iframeWindow.postMessage('CONSENT_DECLINED', '*');
+    });
+});
+```
