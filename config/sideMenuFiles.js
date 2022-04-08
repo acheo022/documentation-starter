@@ -1,10 +1,8 @@
 const sideMenuItems = [
   {
-    section: 'Docs',
-    children: [
-      'getting-started.mdx',
-    ]
+    section: "Docs",
+    children: ["Embedding-tutorial.mdx"],
   },
-]
+];
 
-export default sideMenuItems
+export default sideMenuItems;
